@@ -178,6 +178,11 @@ python main.py
 - A função possui poucos ramos (`if`), e a **recursão não aumenta M**; ela reutiliza os mesmos ramos em níveis inferiores.  
 - Para **cobertura de testes**, recomenda-se projetar **≥ 6 casos** que percorram um conjunto base de caminhos independentes.
 
+
+### Diagrama de Fluxo
+
+![Diagrama de fluxo](./diagrama_de_fluxo.jpg)
+
 ---
 ## Análise da complexidade assintótica – Karatsuba
 
@@ -224,6 +229,3 @@ python main.py
 ---
 
 
-### 4) Diagrama de Fluxo
-
-![Diagrama de fluxo](./diagrama_de_fluxo.jpg)
