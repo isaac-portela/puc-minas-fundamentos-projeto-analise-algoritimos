@@ -6,15 +6,13 @@ Este projeto implementa a multiplicação de inteiros utilizando o **algoritmo d
 
 A ideia central é dividir cada número em **duas metades** (parte alta e baixa) e calcular o produto com **apenas 3 multiplicações recursivas**, explorando a identidade:
 
-- Seja \( u = p \cdot 10^m + q \) e \( v = r \cdot 10^m + s \).
+- Seja `u = p * 10^m + q` e `v = r * 10^m + s`.
 - Computamos:
-  - \( pr = p \cdot r \)
-  - \( qs = q \cdot s \)
-  - \( y = (p+q)\cdot(r+s) \)
+  - `pr = p * r`
+  - `qs = q * s`
+  - `y = (p + q) * (r + s)`
 - Então:
-  \[
-  u \cdot v = pr \cdot 10^{2m} + (y - pr - qs)\cdot 10^{m} + qs
-  \]
+`u * v = pr * 10^(2m) + (y - pr - qs) * 10^m + qs`
 
 
 ## Passo a passo das funções (foco em `karatsuba`)
