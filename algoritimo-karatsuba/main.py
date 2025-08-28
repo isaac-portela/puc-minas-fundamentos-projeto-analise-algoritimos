@@ -99,8 +99,8 @@ if __name__ == "__main__":
     print(f"x = {x}")
     print(f"y = {y}")
     print(f"Karatsuba: {produto_karatsuba}")
-    print(f"Direto    : {produto_direto}")
-    print("Confere?", produto_karatsuba == produto_direto)
+    print(f"Produto Direto    : {produto_direto}")
+    print("E igual?", produto_karatsuba == produto_direto)
 
     # Alguns testes adicionais
     casos = [
