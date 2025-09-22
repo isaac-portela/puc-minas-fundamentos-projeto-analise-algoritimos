@@ -95,62 +95,55 @@ Total no *merge*: **2** comparações, independentemente do tamanho dos subarray
 ##  Relatório técnico — Análise de complexidade
 
 ## Contagem de comparações — MaxMin Select
-
 **Casos base**
-- $T(1)=0$ → com 1 elemento, ele é min e max.
-- $T(2)=1$ → 1 comparação decide quem é min e quem é max.
+- `T(1) = 0` → com 1 elemento, ele é min e max.
+- `T(2) = 1` → 1 comparação decide quem é min e quem é max.
 
-**Para $n>2$**: dividimos o vetor em duas metades e, no *merge*, fazemos **2 comparações** (uma para o min global e outra para o max global):
-$$
-T(n)=T(\lfloor n/2 \rfloor)+T(\lceil n/2 \rceil)+2.
-$$
+**Para n > 2**  
+Dividimos o vetor em duas metades e, na combinação (merge), fazemos **2 comparações**
+(uma para o min global e outra para o max global):
+T(n) = T(floor(n/2)) + T(ceil(n/2)) + 2
 
-Quando $n$ é potência de 2 ($n=2^k$), fica:
-$$
-T(n)=2\,T\!\left(\frac{n}{2}\right)+2,\qquad T(2)=1.
-$$
+**Quando n é potência de 2 (n = 2^k)**  
+A recorrência simplifica para: T(n) = 2 * T(n/2) + 2 com T(2) = 1
+**Expansão até a base**
+T(n) = 2^(k-1) * T(2) + 2 * (2^(k-1) - 1)
+T(n) = (n/2) * 1 + 2 * (n/2 - 1)
+T(n) = 3n/2 - 2
 
-**Expansão até a base**:
-$$
-\begin{aligned}
-T(n) &= 2^{\,k-1}\,T(2) + 2\,(2^{\,k-1}-1) \\
-     &= \frac{n}{2} + 2\!\left(\frac{n}{2}-1\right) \\
-     &= \frac{3n}{2} - 2.
-\end{aligned}
-$$
 
-**Resumo**: o algoritmo faz cerca de $\frac{3n}{2}-2$ comparações (quando $n$ é potência de 2) e, no geral, o custo é **linear**: $\Theta(n)$.
+**Resumo**
+- Número de comparações ≈ `3n/2 - 2` (quando n é potência de 2).
+- Para n geral (ímpares ou não-potências de 2), o custo continua **linear**: `Theta(n)`.
 
-> Comparando: a versão “ingênua” (duas varreduras) faz $2(n-1)$ comparações.  
-> As versões *pairwise* e *divide-and-conquer* ficam por volta de $1{,}5n$.
+> Comparando: a versão “ingênua” (duas varreduras) faz `2(n - 1)` comparações.  
+> As versões *pairwise* e *divide-and-conquer* ficam em torno de `1,5n`.
 
 ---
 
-## Teorema Mestre — MaxMin Select
+## Teorema Mestre — MaxMin Select (sem LaTeX)
 
-Recorrência no formato padrão:
-$$
-T(n)=a\cdot T\!\left(\frac{n}{b}\right)+f(n).
-$$
+**Forma padrão da recorrência:**
+T(n) = a * T(n/b) + f(n)
 
-Para este algoritmo:
-$$
-a=2,\qquad b=2,\qquad f(n)=\Theta(1).
-$$
+**Para este algoritmo:**
+a = 2
+b = 2
+f(n) = constante (O(1))
 
-Logo:
-$$
-\log_b a=\log_2 2=1
-\quad\Rightarrow\quad
-f(n)=\Theta(1)=O(n^{1-\varepsilon})\;(\varepsilon=1).
-$$
 
-**Caso 1 do Teorema Mestre**:
-$$
-T(n)=\Theta\!\big(n^{\log_b a}\big)=\Theta(n).
-$$
+**Cálculo e comparação de ordens**
+- `log_b(a) = log_2(2) = 1`
+- `f(n) = O(1)` cresce mais devagar do que `n^1` (ou seja, é menor do que `n`)
 
-**Conclusão**: a ordem de tempo é **$\Theta(n)$**, o que bate com a conta de $\frac{3n}{2}-2$ comparações no caso ideal.
+**Conclusão (Caso 1 do Teorema Mestre):**
+T(n) = O(n)
+
+**Coerência com a conta exata (caso ideal):**
+
+T(n) = 2 * T(n/2) + 2, T(2) = 1 => T(n) = 3n/2 - 2
+---
+
 
 
 ## 🖼 Diagrama da recursão 
